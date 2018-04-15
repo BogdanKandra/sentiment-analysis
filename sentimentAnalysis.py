@@ -8,6 +8,10 @@ import nltk
 import random
 import pickle
 from nltk.corpus import movie_reviews, stopwords
+from nltk.classify.scikitlearn import SklearnClassifier
+from sklearn.naive_bayes import MultinomialNB, BernoulliNB
+from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.svm import SVC, LinearSVC, NuSVC
 
 stopwords = set(stopwords.words('english'))
 
@@ -48,19 +52,139 @@ feature_sets = [(find_features(review), category) for (review, category) in docu
 training_set = feature_sets[:1900] # First 1900 reviews are for training
 testing_set  = feature_sets[1900:] # Last 100 reviews are for testing
 
-# Train a fresh classifier
-#classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-# Pickle the classifier
-#save_classifier = open('naivebayes.pickle', 'wb')
-#pickle.dump(classifier, save_classifier)
-#save_classifier.close()
+# Train a fresh NLTK Naive Bayes Classifier
+classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-# Unpickle the trained classifier
-classifier_file = open('naivebayes.pickle', 'rb')
-classifier = pickle.load(classifier_file)
+# Pickle the trained NB Classifier
+classifier_file = open('classifiers/nltknaivebayes.pickle', 'wb')
+pickle.dump(classifier, classifier_file)
 classifier_file.close()
 
-# Test
-print('Naive Bayes accuracy:', nltk.classify.accuracy(classifier, testing_set) * 100)
-classifier.show_most_informative_features(30)
+# Unpickle the trained NLTK NB Classifier
+#classifier_file = open('classifiers/nltknaivebayes.pickle', 'rb')
+#classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the NLTK NB Classifier
+print('NLTK Naive Bayes accuracy:', nltk.classify.accuracy(classifier, testing_set) * 100)
+#classifier.show_most_informative_features(30)
+
+# Train a fresh Multinomial Naive Bayes Classifier
+MNB_classifier = SklearnClassifier(MultinomialNB())
+MNB_classifier.train(training_set)
+
+# Pickle the trained MNB Classifier
+classifier_file = open('classifiers/multinomialnaivebayes.pickle', 'wb')
+pickle.dump(MNB_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained MNB classifier
+#classifier_file = open('classifiers/multinomialnaivebayes.pickle', 'rb')
+#MNB_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Multinomial NB classifier
+print('Multinomial Naive Bayes accuracy:', nltk.classify.accuracy(MNB_classifier, testing_set) * 100)
+
+# Train a fresh Bernoulli Naive Bayes Classifier
+BNB_classifier = SklearnClassifier(BernoulliNB())
+BNB_classifier.train(training_set)
+
+# Pickle the trained BNB Classifier
+classifier_file = open('classifiers/bernoullinaivebayes.pickle', 'wb')
+pickle.dump(BNB_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained BNB classifier
+#classifier_file = open('classifiers/bernoullinaivebayes.pickle', 'rb')
+#BNB_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Bernoulli NB classifier
+print('Bernoulli Naive Bayes accuracy:', nltk.classify.accuracy(BNB_classifier, testing_set) * 100)
+
+# Train a fresh Logistic Regression Classifier
+LR_classifier = SklearnClassifier(LogisticRegression())
+LR_classifier.train(training_set)
+
+# Pickle the trained LR Classifier
+classifier_file = open('classifiers/logisticregression.pickle', 'wb')
+pickle.dump(LR_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained LR Classifier
+#classifier_file = open('classifiers/logisticregression.pickle', 'rb')
+#LR_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Logistic Regression Classifier
+print('Logistic Regression accuracy:', nltk.classify.accuracy(LR_classifier, testing_set) * 100)
+
+# Train a fresh Stochastic Gradient Descent Classifier
+SGD_classifier = SklearnClassifier(SGDClassifier())
+SGD_classifier.train(training_set)
+
+# Pickle the trained SGD Classifier
+classifier_file = open('classifiers/gradientdescent.pickle', 'wb')
+pickle.dump(SGD_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained SGD Classifier
+#classifier_file = open('classifiers/gradientdescent.pickle', 'rb')
+#SGD_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Stochastic Gradient Descent Classifier
+print('Stochastic Gradient Descent accuracy:', nltk.classify.accuracy(SGD_classifier, testing_set) * 100)
+
+# Train a fresh Support Vector Classifier
+SV_classifier = SklearnClassifier(SVC())
+SV_classifier.train(training_set)
+
+# Pickle the trained SV Classifier
+classifier_file = open('classifiers/supportvector.pickle', 'wb')
+pickle.dump(SV_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained SV Classifier
+#classifier_file = open('classifiers/supportvector.pickle', 'rb')
+#SV_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Support Vector Classifier
+print('Support Vectors accuracy:', nltk.classify.accuracy(SV_classifier, testing_set) * 100)
+
+# Train a fresh Linear Support Vector Classifier
+LSV_classifier = SklearnClassifier(LinearSVC())
+LSV_classifier.train(training_set)
+
+# Pickle the trained LSV Classifier
+classifier_file = open('classifiers/linearsupportvector.pickle', 'wb')
+pickle.dump(LSV_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained LSV Classifier
+#classifier_file = open('classifiers/linearsupportvector.pickle', 'rb')
+#LSV_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Linear Support Vector Classifier
+print('Linear Support Vectors accuracy:', nltk.classify.accuracy(LSV_classifier, testing_set) * 100)
+
+# Train a fresh Nu Support Vector Classifier
+NuSV_classifier = SklearnClassifier(NuSVC())
+NuSV_classifier.train(training_set)
+
+# Pickle the trained NuSV Classifier
+classifier_file = open('classifiers/nusupportvector.pickle', 'wb')
+pickle.dump(NuSV_classifier, classifier_file)
+classifier_file.close()
+
+# Unpickle the trained NuSV Classifier
+#classifier_file = open('classifiers/nusupportvector.pickle', 'rb')
+#NuSV_classifier = pickle.load(classifier_file)
+#classifier_file.close()
+
+# Test the Nu Support Vector Classifier
+print('Nu Support Vectors accuracy:', nltk.classify.accuracy(NuSV_classifier, testing_set) * 100)
