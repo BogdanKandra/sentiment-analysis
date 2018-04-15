@@ -6,6 +6,7 @@ Created on Fri Apr 13 15:08:22 2018
 
 import nltk
 import random
+import pickle
 from nltk.corpus import movie_reviews, stopwords
 
 stopwords = set(stopwords.words('english'))
@@ -47,8 +48,18 @@ feature_sets = [(find_features(review), category) for (review, category) in docu
 training_set = feature_sets[:1900] # First 1900 reviews are for training
 testing_set  = feature_sets[1900:] # Last 100 reviews are for testing
 
-# Train
-classifier = nltk.NaiveBayesClassifier.train(training_set)
+# Train a fresh classifier
+#classifier = nltk.NaiveBayesClassifier.train(training_set)
+
+# Pickle the classifier
+#save_classifier = open('naivebayes.pickle', 'wb')
+#pickle.dump(classifier, save_classifier)
+#save_classifier.close()
+
+# Unpickle the trained classifier
+classifier_file = open('naivebayes.pickle', 'rb')
+classifier = pickle.load(classifier_file)
+classifier_file.close()
 
 # Test
 print('Naive Bayes accuracy:', nltk.classify.accuracy(classifier, testing_set) * 100)
