@@ -6,27 +6,50 @@ Created on Fri Apr 13 15:08:22 2018
 
 import nltk
 import random
-from nltk.corpus import movie_reviews
+from nltk.corpus import movie_reviews, stopwords
 
-# Build the data
+stopwords = set(stopwords.words('english'))
+
+# Collect the data -- movie_reviews corpus, 2000 reviews (1000 pos and 1000 neg)
 documents = []
 for category in movie_reviews.categories():
     for fileid in movie_reviews.fileids(category):
         documents.append((list(movie_reviews.words(fileid)), category))
 
+# Randomize the data so it is suitable for training and testing sets
+random.seed(69)
 random.shuffle(documents)
 
 # The Bag-of-words model
-all_words = []
-for w in movie_reviews.words():
-    all_words.append(w.lower())
+# Remove stopwords, punctuation, numerals and lowercase the rest
+all_words = [w.lower() for w in movie_reviews.words() 
+                if len(w) > 2 and w not in stopwords and w.isnumeric() == False]
 
 all_words = nltk.FreqDist(all_words)
-print(all_words.most_common(30))
 
+# Take most common 4000 words as features
+word_features = [w[0] for w in all_words.most_common(4000)]
 
-### Workflow #############
-# Data preprocessing - Lowercase, Tokenize, Stopwords, Stem
-# Feature extraction
-# Training
-# Testing
+def find_features(document):
+    """ Features (the 4000 most common words from the movie_reviews corpus)
+    are searched in the document. Results are represented as a dictionary.
+    """
+    words = set(document)
+    features = {}
+    for w in word_features:
+        features[w] = w in words
+        
+    return features
+
+# Find features for every review in documents
+feature_sets = [(find_features(review), category) for (review, category) in documents]
+
+training_set = feature_sets[:1900] # First 1900 reviews are for training
+testing_set  = feature_sets[1900:] # Last 100 reviews are for testing
+
+# Train
+classifier = nltk.NaiveBayesClassifier.train(training_set)
+
+# Test
+print('Naive Bayes accuracy:', nltk.classify.accuracy(classifier, testing_set) * 100)
+classifier.show_most_informative_features(30)
