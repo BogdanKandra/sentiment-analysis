@@ -3,7 +3,6 @@ Created on Fri Apr 13 15:08:22 2018
 
 @author: Bogdan
 """
-
 import nltk, pickle
 import proj_utils as utils
 from voteClassifier import VoteClassifier

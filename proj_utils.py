@@ -3,7 +3,6 @@ Created on Tue May  1 21:19:33 2018
 
 @author: Bogdan
 """
-
 import collections
 from nltk import precision, recall
 from nltk.corpus import stopwords, movie_reviews
