@@ -1,0 +1,40 @@
+Naive Bayes accuracy: 71.2396694214876
+pos precision: 0.7406143344709898
+pos recall: 0.6888888888888889
+neg precision: 0.6858974358974359
+neg recall: 0.7379310344827587
+Multinomial Naive Bayes accuracy: 72.56198347107437
+pos precision: 0.7458745874587459
+pos recall: 0.7174603174603175
+neg precision: 0.7052980132450332
+neg recall: 0.7344827586206897
+Bernoulli Naive Bayes accuracy: 71.73553719008264
+pos precision: 0.7517482517482518
+pos recall: 0.6825396825396826
+neg precision: 0.6865203761755486
+neg recall: 0.7551724137931034
+Logistic Regression accuracy: 72.89256198347107
+pos precision: 0.7525083612040134
+pos recall: 0.7142857142857143
+neg precision: 0.7058823529411765
+neg recall: 0.7448275862068966
+Stochastic Gradient Descent accuracy: 69.75206611570248
+pos precision: 0.7142857142857143
+pos recall: 0.6984126984126984
+neg precision: 0.6801346801346801
+neg recall: 0.696551724137931
+Linear Support Vectors accuracy: 68.4297520661157
+pos precision: 0.7080536912751678
+pos recall: 0.6698412698412698
+neg precision: 0.6612377850162866
+neg recall: 0.7
+Nu Support Vectors accuracy: 70.08264462809917
+pos precision: 0.7133757961783439
+pos recall: 0.7111111111111111
+neg precision: 0.6872852233676976
+neg recall: 0.6896551724137931
+VoteClassifier accuracy: 71.07438016528926
+pos precision: 0.7348993288590604
+pos recall: 0.6952380952380952
+neg precision: 0.6872964169381107
+neg recall: 0.7275862068965517
