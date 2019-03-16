@@ -69,7 +69,7 @@ f.close()
 training_set = feature_sets[0:5000] + feature_sets[5332:10332]
 testing_set  = [elem for elem in feature_sets if elem not in training_set]
 
-log_file = open('logs/before3.txt', 'a')
+log_file = open('logs/test.txt', 'a')
 
 # Train a fresh NLTK Naive Bayes Classifier
 NB_classifier = nltk.NaiveBayesClassifier.train(training_set)

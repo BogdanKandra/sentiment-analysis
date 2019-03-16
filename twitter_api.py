@@ -19,18 +19,21 @@ class listener(StreamListener):
 
     def on_data(self, data):
         
-        all_data = json.loads(data)
-        
-        tweet = all_data["text"]
-        sentiment, confidence = s.analyse(tweet)
-        print(tweet, sentiment, confidence)
-        
-        if confidence*100 >= 60:
-            f = open('logs/twitters.txt', 'a')
-            f.write(sentiment + '\n')
-            f.close()
-        
-        return True
+        try:
+            all_data = json.loads(data)
+            
+            tweet = all_data["text"]
+            sentiment, confidence = s.analyse(tweet)
+            print(tweet, sentiment, confidence)
+            
+            if confidence*100 >= 60:
+                f = open('logs/tweets.txt', 'a')
+                f.write(sentiment + '\n')
+                f.close()
+            
+            return True
+        except:
+            return True
 
     def on_error(self, status):
         print(status)
