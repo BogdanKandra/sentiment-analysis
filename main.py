@@ -9,7 +9,7 @@ from voteClassifier import VoteClassifier
 
 # Predicts the sentiment of a text on demand
 def sentiment(text):
-    features = utils.find_features(text, word_features)
+    features = utils.get_features2(text, word_features)
     return voted_classifier.classify(features), voted_classifier.confidence(features)
 
 # Unpickle the documents and features
@@ -64,4 +64,4 @@ text2 = "This movie was utter junk. There were absolutely 0 pythons. I don't see
 text3 = "I think this movie was extremely good, fabulous, superb, smart and beautiful, great."
 text4 = "This movie was awesome! The acting was great, plot was wonderful, and there were pythons...so yea!"
 
-#print('Classification:', analyse(text1))
+print('Classification:', sentiment(text4))

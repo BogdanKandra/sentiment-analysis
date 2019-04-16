@@ -1,0 +1,6 @@
+- Va trebui sa deschizi consola Anaconda Prompt 
+- pip install nltk
+- pip install scikit-learn
+- pip install pickle
+
+- nltk data (https://www.nltk.org/data.html)

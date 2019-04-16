@@ -28,6 +28,15 @@ def get_words():
     return words
 
 def get_features(document, word_features):
+    document = ' '.join(document)
+    words = word_tokenize(document)
+    features = {}
+    for w in word_features:
+        features[w] = (w in words)
+
+    return features
+
+def get_features2(document, word_features):
     words = word_tokenize(document)
     features = {}
     for w in word_features:
