@@ -7,8 +7,8 @@ from nltk.classify import ClassifierI
 from statistics import mode
 
 class VoteClassifier(ClassifierI):
-    def __init__(self, *classifiers):
-        self._classifiers = classifiers
+    def __init__(self, classifierList):
+        self._classifiers = classifierList
     
     def classify(self, features):
         votes = []
