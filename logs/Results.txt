@@ -1,0 +1,77 @@
+BernoulliNB accuracy: 74.5
+pos precision: 0.8625
+pos recall: 0.6330275229357798
+neg precision: 0.6666666666666666
+neg recall: 0.8791208791208791
+
+MultinomialNB accuracy: 77.5
+pos precision: 0.8478260869565217
+pos recall: 0.7155963302752294
+neg precision: 0.7129629629629629
+neg recall: 0.8461538461538461
+
+LogisticRegression accuracy: 82.0
+pos precision: 0.8613861386138614
+pos recall: 0.7981651376146789
+neg precision: 0.7777777777777778
+neg recall: 0.8461538461538461
+
+LogisticRegressionCV accuracy: 82.5
+pos precision: 0.87
+pos recall: 0.7981651376146789
+neg precision: 0.78
+neg recall: 0.8571428571428571
+
+SGDClassifier accuracy: 78.5
+pos precision: 0.7704918032786885
+pos recall: 0.8623853211009175
+neg precision: 0.8076923076923077
+neg recall: 0.6923076923076923
+
+LinearSVC accuracy: 79.0
+pos precision: 0.8252427184466019
+pos recall: 0.7798165137614679
+neg precision: 0.7525773195876289
+neg recall: 0.8021978021978022
+
+NuSVC accuracy: 83.0
+pos precision: 0.8712871287128713
+pos recall: 0.8073394495412844
+neg precision: 0.7878787878787878
+neg recall: 0.8571428571428571
+
+DecisionTreeClassifier accuracy: 61.5
+pos precision: 0.6538461538461539
+pos recall: 0.6238532110091743
+neg precision: 0.5729166666666666
+neg recall: 0.6043956043956044
+
+KNeighborsClassifier accuracy: 48.5
+pos precision: 0.7142857142857143
+pos recall: 0.09174311926605505
+neg precision: 0.46774193548387094
+neg recall: 0.9560439560439561
+
+MLPClassifier accuracy: 82.0
+pos precision: 0.8686868686868687
+pos recall: 0.7889908256880734
+neg precision: 0.7722772277227723
+neg recall: 0.8571428571428571
+
+RandomForestClassifier accuracy: 65.0
+pos precision: 0.782608695652174
+pos recall: 0.4954128440366973
+neg precision: 0.5801526717557252
+neg recall: 0.8351648351648352
+
+AdaBoostClassifier accuracy: 71.5
+pos precision: 0.7452830188679245
+pos recall: 0.7247706422018348
+neg precision: 0.6808510638297872
+neg recall: 0.7032967032967034
+
+GradientBoostingClassifier accuracy: 76.5
+pos precision: 0.803921568627451
+pos recall: 0.7522935779816514
+neg precision: 0.7244897959183674
+neg recall: 0.7802197802197802
